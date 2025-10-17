@@ -7,7 +7,7 @@ class App {
 
     //빈 문자열 처리
     if (STRING_INPUT === '') {
-      console.log('결과 : 0');
+      Console.print('결과 : 0');
       
     }
 
@@ -97,7 +97,7 @@ class App {
     for (let i = 0; i < NUMBERS.length; i++){
       result += NUMBERS[i];
     }
-    console.log(`결과 : ${result}`)
+    Console.print(`결과 : ${result}`)
   } 
 }
 
