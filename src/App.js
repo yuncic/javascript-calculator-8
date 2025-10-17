@@ -7,7 +7,7 @@ class App {
 
     //빈 문자열 처리
     if (STRING_INPUT === '') {
-      Console.print('결과 : 0');
+      Console.print('결과 : 0'); // 테스트파일에 mission-utils의 Console.print만 Spy한다고 되어있음
       
     }
 
@@ -16,7 +16,7 @@ class App {
    
     if (!STRING_INPUT || (!STRING_INPUT.startsWith('//') && !(FIRST_CHAR >= '0'))) {
       if(STRING_INPUT.startsWith('-')){
-        throw new Error('[ERROR] 음수는 입력할 수 없습니다.');
+        throw new Error('[ERROR] 음수는 입력할 수 없습니다.'); //기존의 proccess.exit(1)은 
         
       } 
       throw new Error('[ERROR] 제대로 된 입력값을 주세요.');
