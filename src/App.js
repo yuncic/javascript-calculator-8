@@ -8,7 +8,7 @@ class App {
     //빈 문자열 처리
     if (STRING_INPUT === '') {
       console.log('결과 : 0');
-      process.exit(1);
+      
     }
 
     // 입력값 시작 검사
@@ -16,11 +16,11 @@ class App {
    
     if (!STRING_INPUT || (!STRING_INPUT.startsWith('//') && !(FIRST_CHAR >= '0'))) {
       if(STRING_INPUT.startsWith('-')){
-        console.error('[ERROR] 음수는 입력할 수 없습니다.');
-        process.exit(1);
+        throw new Error('[ERROR] 음수는 입력할 수 없습니다.');
+        
       } 
-      console.error('[ERROR] 제대로 된 입력값을 주세요.');
-      process.exit(1);
+      throw new Error('[ERROR] 제대로 된 입력값을 주세요.');
+      
     }
 
     let NUMBERS = [];
@@ -31,8 +31,8 @@ class App {
     if (STRING_INPUT.startsWith('//')) {
       // 커스텀 구분자 문법 검사
       if (!STRING_INPUT.includes('\\n')){
-        console.error('[ERROR] 커스텀 구분자 문법을 제대로 입력해주세요.');
-        process.exit(1);
+        throw new Error('[ERROR] 커스텀 구분자 문법을 제대로 입력해주세요.');
+        
       }
       // '\n' 기준으로 커스텀 구분자와 본문 분리
       [DELIMITER_PART, NUMBER_PART] = STRING_INPUT.split('\\n');
@@ -42,24 +42,24 @@ class App {
         const NUM_STR = str.trim();
         //구분자 다음 숫자가 안 나올때(공백처리됨)
         if (NUM_STR === ''){
-          console.error("[ERROR] 제대로된 구분자를 사용해주세요.");
-          process.exit(1);
+          throw new Error("[ERROR] 제대로된 구분자를 사용해주세요.");
+          
         }
 
         const NUM = Number(NUM_STR);
 
         if (isNaN(NUM)) {
-          console.error("[ERROR] 제대로된 구분자를 사용해주세요.");
-          process.exit(1);
+          throw new Error("[ERROR] 제대로된 구분자를 사용해주세요.");
+          
         }
 
         if (NUM <0 ) {
-          console.error('[ERROR] 음수는 입력할 수 없습니다.')
+          throw new Error('[ERROR] 음수는 입력할 수 없습니다.')
           return;
         }
 
         if (!Number.isInteger(NUM)) {
-          console.error('[ERROR] 정수만 입력 가능합니다.')
+          throw new Error('[ERROR] 정수만 입력 가능합니다.')
           return;
         }
 
@@ -74,18 +74,18 @@ class App {
         const NUM = Number(NUM_STR);
 
         if (isNaN(NUM)) {
-          console.error('[ERROR] 제대로된 구분자를 사용해주세요.')
-          process.exit(1);
+          throw new Error('[ERROR] 제대로된 구분자를 사용해주세요.')
+          
         }
 
         if (NUM < 0) {
-          console.error('[ERROR] 음수는 입력할 수 없습니다.')
-          process.exit(1);
+          throw new Error('[ERROR] 음수는 입력할 수 없습니다.')
+          
         } 
 
         if (!Number.isInteger(NUM)) {
-          console.error('[ERROR] 정수만 입력 가능합니다.')
-          process.exit(1);
+          throw new Error('[ERROR] 정수만 입력 가능합니다.')
+          
         }
         return NUM;
       });
